@@ -1,0 +1,7 @@
+@echo off
+REM TODO: add newlines
+REM
+REM JUNIT SETUP
+echo "JUNIT VARIABLES:"
+echo "JUNIT_HOME" %JUNIT_HOME%
+echo "CLASSPATH"  %CLASSPATH%
