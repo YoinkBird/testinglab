@@ -14,7 +14,7 @@ public class TestTempServlet extends TestCase {
     response.setExpectedContentType("text/html");
     s.doGet(request,response);
     response.verify();
-    assertEquals("Invalid temperature: boo!\n",
+    assertEquals("Invalid temperature: boo!\r\n",
                  response.getOutputStreamContents());
   }
   
@@ -29,7 +29,7 @@ public class TestTempServlet extends TestCase {
     response.setExpectedContentType("text/html");
     s.doGet(request,response);
     response.verify();
-    assertEquals("Fahrenheit: 212, Celsius: 100.0\n",
+    assertEquals("Fahrenheit: 212, Celsius: 100.0\r\n",
                  response.getOutputStreamContents());
   }
   
