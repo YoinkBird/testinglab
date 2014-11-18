@@ -1,5 +1,6 @@
 
 set RESDIR=..\res
+set this_classpath=%this_classpath%;%RESDIR%\junit\4.10\junit-4.10.jar
 set this_classpath=%this_classpath%;%RESDIR%\mockobjects-0.6-core.jar
 set this_classpath=%this_classpath%;%RESDIR%\mockobjects-0.6-j1.4-j2ee1.2.jar
 set this_classpath=%this_classpath%;%RESDIR%\selenium-server-standalone-2.11.0.jar
