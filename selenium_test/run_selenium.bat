@@ -1,12 +1,28 @@
-REM set selenium_cp=%CD%;selenium-server-standalone-2.44.0.jar
 REM https://code.google.com/p/selenium/wiki/GettingStarted
+
+set RESDIR=..\res
+set this_classpath=%this_classpath%;%RESDIR%\selenium-server-standalone-2.44.0.jar
+
 echo "Example"
-javac -cp selenium-server-standalone-2.44.0.jar Example.java
-java -cp %CD%;selenium-server-standalone-2.44.0.jar Example
+set this_classname=Example
+set this_javac_files=%this_classname%.java
+set this_java_target=%this_classname%
+javac -cp %this_classpath% %this_javac_files%
+
+java -cp %CD%;%this_classpath% %this_java_target%
 
 echo "GoogleSuggest:"
-javac -cp selenium-server-standalone-2.44.0.jar GoogleSuggest.java
-java -cp %CD%;selenium-server-standalone-2.44.0.jar GoogleSuggest
+set this_classname=GoogleSuggest
+set this_javac_files=%this_classname%.java
+set this_java_target=%this_classname%
+javac -cp %this_classpath% %this_javac_files%
+
+java -cp %CD%;%this_classpath% %this_java_target%
 
 
-REM set selenium_cp=
+REM cleanup; littering is bad
+set RESDIR=
+set this_classpath=
+set this_classname=
+set this_java_target=
+set this_javac_files=
