@@ -10,23 +10,28 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
 // explanation http://docs.seleniumhq.org/docs/03_webdriver.jsp#selenium-webdriver-api-commands-and-operations
+// design: see https://code.google.com/p/selenium/wiki/PageFactory
 public class APTTestingLab {
     public static void main(String[] args) throws Exception {
-        // The Firefox driver supports javascript 
-        WebDriver driver = new FirefoxDriver();
-        
-        // Go to the APT Testing Lab home page
-        driver.get("http://apt-public.appspot.com/testing-lab-login.html");
+      // test logins
+      checkLoginPage();
+    }
 
-        APTLabLogin loginPage = PageFactory.initElements(driver, APTLabLogin.class);
-        // test different user logins
-        loginPage.testLogins();
-        
+    private static void checkLoginPage(){
+      // The Firefox driver supports javascript
+      WebDriver driver = new FirefoxDriver();
 
+      // Go to the APT Testing Lab home page
+      driver.get("http://apt-public.appspot.com/testing-lab-login.html");
 
-        // Check the title of the page
-        //System.out.println("Page title is: " + driver.getTitle());
+      // test different user logins
+      APTLabLogin loginPage = PageFactory.initElements(driver, APTLabLogin.class);
+      loginPage.testLogins();
 
-        driver.quit();
+      // Check the title of the page
+      //System.out.println("Page title is: " + driver.getTitle());
+
+      // close browser
+      driver.quit();
     }
 }
