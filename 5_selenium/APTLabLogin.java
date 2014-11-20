@@ -51,6 +51,47 @@ public class APTLabLogin {
       }
     }
 
+    // Three failed logins for a user in ten seconds should lead to a 1 minute lockout.
+    public void testLoginInvalidPassword(WebDriver driver){
+      this.driver = driver;
+      // Enter the username
+      // usernames:  andy, bob and charley
+      // passwords: apple, bathtub, china
+      // TODO: warning! make sure both lists are same length
+      List<String> userNames = getUserNames();
+      List<String> userPasswords = getUserPassWords();
+      userPasswords.add("baloney");
+      userPasswords.add("junk");
+      // one username and all wrong passwords
+      for (int indexUser = 0; indexUser < userNames.size(); indexUser++){
+        if(indexUser > 0){
+          continue;
+        }
+        String userName = userNames.get(indexUser);
+        for (int indexPassWord = 0; indexPassWord < userPasswords.size(); indexPassWord++){
+          int loginAttempts = 0;
+          String userPass = userPasswords.get(indexPassWord);
+          // only test non-valid ...
+          if(indexUser != indexPassWord){
+            APTTestingLab.logInfo("testing username " + userName + " password: " + userPass);
+            boolean success = login(userName, userPass);
+            if(success){
+              APTTestingLab.logErr("unexpected: successful login should have been invalid - user: " + userName + " pass: " + userPass);
+            }else{
+              APTTestingLab.logInfo("expected: unsuccessful login - user: " + userName + " pass: " + userPass);
+              loginAttempts++;
+              if(loginAttempts >= 2){
+                // failed!
+                // TODO: track time of first failed attempt
+                // TODO: verify 1 minute lockout
+              }
+            }
+          }
+          driver.navigate().back();
+        }
+      }
+    }
+
     private boolean login(String userName, String userPass){
       return login(userName, userPass, 0);
     }
@@ -115,5 +156,14 @@ public class APTLabLogin {
           "sorry"
           );
       return userPassWords;
+    }
+
+    public static void wait(int seconds){
+      long msWaitTime = seconds * 1000;
+      try{
+        Thread.sleep(msWaitTime);
+      } catch(InterruptedException ex) {
+        Thread.currentThread().interrupt();
+      }
     }
 }

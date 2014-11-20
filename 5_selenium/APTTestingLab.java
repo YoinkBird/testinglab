@@ -41,6 +41,8 @@ public class APTTestingLab {
       APTLabLogin loginPage = PageFactory.initElements(driver, APTLabLogin.class);
       log("TEST: testing multiple logins and passwords");
       loginPage.testVariousLogins(driver);
+      log("TEST: testing one login and multiple invalid passwords");
+      loginPage.testLoginInvalidPassword(driver);
 
       // Check the title of the page
       //System.out.println("Page title is: " + driver.getTitle());
