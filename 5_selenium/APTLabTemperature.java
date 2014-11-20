@@ -21,11 +21,13 @@ public class APTLabTemperature {
 
     // http://docs.seleniumhq.org/docs/04_webdriver_advanced.jsp#implicit-waits
     // http://apt-public.appspot.com/testing-lab-calculator.html 
-    public void checkTemperature(){
+    public void checkTemperature(String temperature){
       farenheitTemperature.clear();
-      farenheitTemperature.sendKeys("32");
+      farenheitTemperature.sendKeys(temperature);
       // "press enter"
       farenheitTemperature.submit();
+
+      verifyTemperature();
 
     }
 
