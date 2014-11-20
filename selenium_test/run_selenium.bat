@@ -19,6 +19,14 @@ javac -cp %this_classpath% %this_javac_files%
 
 java -cp %CD%;%this_classpath% %this_java_target%
 
+echo "UsingGoogleSearchPage:"
+set this_classname=UsingGoogleSearchPage
+set this_javac_files=%this_classname%.java
+set this_java_target=%this_classname%
+javac -cp %this_classpath% %this_javac_files%
+
+java -cp %CD%;%this_classpath% %this_java_target%
+
 
 REM cleanup; littering is bad
 set RESDIR=
