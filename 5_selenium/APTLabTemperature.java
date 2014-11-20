@@ -1,5 +1,6 @@
 //package org.openqa.selenium.example;
 
+import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.List;
@@ -29,6 +30,8 @@ public class APTLabTemperature {
 
       // get temperature string from webpage
       String retTemp = getCalculatedTemp();
+      // precision has strict requirements
+      checkPrecision(temperature, retTemp);
 
     }
 
@@ -58,4 +61,36 @@ public class APTLabTemperature {
       }
       return returnTemp;
     }
+
+    // Temperature results should be 2 places of precision for temperatures from 0 to 212 degrees Farenheit, inclusive, and 1 place of precision otherwise.
+    public void checkPrecision(String sTempF, String tempC){
+      float fTempF = Float.parseFloat(sTempF);
+      float fTempC = Float.parseFloat(tempC);
+
+      BigDecimal bdTempF = new BigDecimal(sTempF);
+      BigDecimal bdTempC = new BigDecimal(tempC);
+      // quick check that it is working
+      System.out.println("  BigDecimal - scale     :" + " F: " + bdTempF.scale() + " C: " + bdTempC.scale());
+      System.out.println("  BigDecimal - precision :" + " F: " + bdTempF.precision() + " C: " + bdTempC.precision());
+      // check precision on string, e.g. BigDecimal scale()
+      // temperatures from 0 to 212 degrees Farenheit, inclusive:  2 places of precision
+      int iRequiredScale = 0;
+      if(fTempF >= 0 || fTempF <= 212){
+        iRequiredScale = 2;
+        if(bdTempC.scale() != iRequiredScale){
+          log(" -E-:  temperature " + tempC + " C does not have " + iRequiredScale + " decimals precision, has " + bdTempC.scale() + " decimals");
+          log(" Got a NumberFormatException on " + sTempF);
+        }
+      }else{
+        iRequiredScale = 1;
+        if(bdTempC.scale() != iRequiredScale){
+          log(" -E-:  temperature " + tempC + " C does not have " + iRequiredScale + " decimals precision, has " + bdTempC.scale() + " decimals");
+        }
+      }
+
+    }
+    public void log(String message){
+      System.out.println(message);
+    }
 }
+
