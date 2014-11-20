@@ -38,6 +38,25 @@ public class APTLabLogin {
       }
     }
 
+    public void testVariousLogins(WebDriver driver){
+      this.driver = driver;
+      // Enter the username
+      // usernames:  andy, bob and charley
+      // passwords: apple, bathtub, china
+      // TODO: warning! make sure both lists are same length
+      List<String> userNames = getUserNames();
+      List<String> userPasswords = getUserPassWords();
+      // try all permutations of usernames and passwords
+      for (int index = 0; index < userNames.size(); index++){
+        String userName = userNames.get(index);
+        for (int j = 0; j < userPasswords.size(); j++){
+          String userPass = userPasswords.get(j);
+          login(userName, userPass);
+          driver.navigate().back();
+        }
+      }
+    }
+
     private boolean login(String userName, String userPass){
       boolean loginSuccess = false;
       userId.clear();
