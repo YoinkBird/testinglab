@@ -15,17 +15,18 @@ public class APTLabLogin {
     private WebElement userId;
     private WebElement userPassword;
 
-    public void testLogins(){
+    public void testLogins(WebDriver driver){
       // Enter the username
       // usernames:  andy, bob and charley
       // passwords: apple, bathtub, china
       // TODO: warning! make sure both lists are same length
-      List<String> userNames = Lists.newArrayList("andy");
-      List<String> userPasswords = Lists.newArrayList("apple");
+      List<String> userNames = getUserNames();
+      List<String> userPasswords = getUserPassWords();
       for (int index = 0; index < userNames.size(); index++){
         String userName = userNames.get(index);
         String userPass = userPasswords.get(index);
         login(userName, userPass);
+        driver.navigate().back();
       }
     }
 
@@ -36,5 +37,27 @@ public class APTLabLogin {
       userPassword.sendKeys(userPass);
       // "press enter"
       userPassword.submit();
+    }
+
+    // test-data related methods
+    private static List<String> getUserNames(){
+      List<String> userNames = Lists.newArrayList(
+          "andy",
+          "bob",
+          "charlie",
+          "charlie",
+          "hacker"
+          );
+      return userNames;
+    }
+    private static List<String> getUserPassWords(){
+      List<String> userPassWords = Lists.newArrayList(
+          "apple",
+          "bathtub",
+          "china",
+          "sorry",
+          "china"
+          );
+      return userPassWords;
     }
 }

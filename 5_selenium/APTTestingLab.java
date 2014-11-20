@@ -39,7 +39,7 @@ public class APTTestingLab {
 
       // test different user logins
       APTLabLogin loginPage = PageFactory.initElements(driver, APTLabLogin.class);
-      loginPage.testLogins();
+      loginPage.testLogins(driver);
 
       // Check the title of the page
       //System.out.println("Page title is: " + driver.getTitle());
