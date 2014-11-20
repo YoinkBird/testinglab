@@ -1,5 +1,6 @@
 //package org.openqa.selenium.example;
 
+import java.util.Date;
 import java.util.List;
 import com.google.common.collect.Lists;
 
@@ -68,8 +69,10 @@ public class APTLabLogin {
           continue;
         }
         String userName = userNames.get(indexUser);
+        // track time
+        int loginAttempts = 0;
+        Date firstInvalidLoginTime = null;
         for (int indexPassWord = 0; indexPassWord < userPasswords.size(); indexPassWord++){
-          int loginAttempts = 0;
           String userPass = userPasswords.get(indexPassWord);
           // only test non-valid ...
           if(indexUser != indexPassWord){
@@ -77,14 +80,36 @@ public class APTLabLogin {
             boolean success = login(userName, userPass);
             if(success){
               APTTestingLab.logErr("unexpected: successful login should have been invalid - user: " + userName + " pass: " + userPass);
+              // reset trackers
+              loginAttempts = 0;
+              firstInvalidLoginTime = null;
             }else{
-              APTTestingLab.logInfo("expected: unsuccessful login - user: " + userName + " pass: " + userPass);
+              // track invalid logins
               loginAttempts++;
-              if(loginAttempts >= 2){
+
+              APTTestingLab.logInfo("expected: unsuccessful login - user: " + userName + " pass: " + userPass);
+              APTTestingLab.logInfo("  current login attempts: " + loginAttempts);
+              // if first invalid login, track time
+              if(loginAttempts == 1){
+                firstInvalidLoginTime = new Date();
+                APTTestingLab.logInfo("first invalid login: " + firstInvalidLoginTime);
+              }
+              int maxLogins = 3;
+              if(loginAttempts > maxLogins){
                 // failed!
                 // TODO: track time of first failed attempt
                 // TODO: verify 1 minute lockout
+                Date thirdInvalidLoginTime = new Date();
+                APTTestingLab.logInfo(
+                    " invalid login #" + loginAttempts +": " + thirdInvalidLoginTime
+                    + " first invalid login: " + firstInvalidLoginTime
+                    );
+                long elapsedTimeMS = thirdInvalidLoginTime.getTime() - firstInvalidLoginTime.getTime();
+                if(elapsedTimeMS < 1 * 60 * 1000){
+                  APTTestingLab.logErr("less than one minute timeout after " + maxLogins + " invalid logins");
+                }
               }
+
             }
           }
           driver.navigate().back();
