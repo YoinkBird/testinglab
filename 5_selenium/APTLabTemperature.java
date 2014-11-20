@@ -27,12 +27,15 @@ public class APTLabTemperature {
       // "press enter"
       farenheitTemperature.submit();
 
-      verifyTemperature();
+      // get temperature string from webpage
+      String retTemp = getCalculatedTemp();
 
     }
 
-    // Temperature results should be 2 places of precision for temperatures from 0 to 212 degrees Farenheit, inclusive, and 1 place of precision otherwise.
-    public void verifyTemperature(){
+    // parse "testing-lab-conversion" page for html element with temperature conversion
+    // return float representation of calculated temperature
+    public String getCalculatedTemp(){
+      String returnTemp = null;
       if(header != null){
         String headerText = header.getText();
         System.out.println("page header: " + headerText);
@@ -44,13 +47,15 @@ public class APTLabTemperature {
         Matcher m = r.matcher(headerText);
 
         if(m.find()){
-          String tempF = m.group(1);
-          String tempC = m.group(2);
+          String tempF = m.group(1).trim();
+          String tempC = m.group(2).trim();
           System.out.println("      tempF: " + tempF + " tempC: " + tempC);
+          returnTemp = tempC;
         }
       }
       else{
         System.out.println("header undefined");
       }
+      return returnTemp;
     }
 }
