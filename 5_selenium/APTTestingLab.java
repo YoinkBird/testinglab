@@ -15,6 +15,8 @@ public class APTTestingLab {
     public static void main(String[] args) throws Exception {
       // test logins
       checkLoginPage();
+      // test temperatures
+      checkTemperaturePage();
     }
 
     private static void checkLoginPage(){
@@ -33,5 +35,16 @@ public class APTTestingLab {
 
       // close browser
       driver.quit();
+    }
+
+    private static void checkTemperaturePage(){
+      // test temperatures
+      WebDriver temperatureDriver = new FirefoxDriver();
+      temperatureDriver.get("http://apt-public.appspot.com/testing-lab-calculator.html");
+      APTLabTemperature temperaturePage = PageFactory.initElements(temperatureDriver, APTLabTemperature.class);
+      temperaturePage.checkTemperature();
+
+      // close browser
+      //temperatureDriver.quit();
     }
 }
