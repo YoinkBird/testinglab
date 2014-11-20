@@ -15,29 +15,6 @@ public class APTLabLogin {
     private WebElement userId;
     private WebElement userPassword;
 
-    public void testValidLogins(WebDriver driver){
-      this.driver = driver;
-      // Enter the username
-      // usernames:  andy, bob and charley
-      // passwords: apple, bathtub, china
-      // TODO: warning! make sure both lists are same length
-      List<String> userNames = getUserNames();
-      List<String> userPasswords = getUserPassWords();
-      // HACK: only three valid logins
-      // TODO: update 'getUser*()' to return 'valid', 'all', 'invalid' values
-      for (int index = 0; index < 3; index++){
-        String userName = userNames.get(index);
-        String userPass = userPasswords.get(index);
-        boolean success = login(userName, userPass);
-        if(success){
-          APTTestingLab.logInfo("successful login - user: " + userName + " pass: " + userPass);
-        }else{
-          APTTestingLab.logErr("unsuccessful login should have been valid - user: " + userName + " pass: " + userPass);
-        }
-        driver.navigate().back();
-      }
-    }
-
     public void testVariousLogins(WebDriver driver){
       this.driver = driver;
       // Enter the username
@@ -47,11 +24,28 @@ public class APTLabLogin {
       List<String> userNames = getUserNames();
       List<String> userPasswords = getUserPassWords();
       // try all permutations of usernames and passwords
-      for (int index = 0; index < userNames.size(); index++){
-        String userName = userNames.get(index);
-        for (int j = 0; j < userPasswords.size(); j++){
-          String userPass = userPasswords.get(j);
-          login(userName, userPass);
+      for (int indexUser = 0; indexUser < userNames.size(); indexUser++){
+        String userName = userNames.get(indexUser);
+        for (int indexPassWord = 0; indexPassWord < userPasswords.size(); indexPassWord++){
+          String userPass = userPasswords.get(indexPassWord);
+          boolean success = login(userName, userPass);
+          // valid user+pass are at same indexUser
+          // if valid ...
+          if(indexUser < 3 && indexUser == indexPassWord){
+            if(success){
+              APTTestingLab.logInfo("expected: successful login - user: " + userName + " pass: " + userPass);
+            }else{
+              APTTestingLab.logErr("unexpected: unsuccessful login should have been valid - user: " + userName + " pass: " + userPass);
+            }
+          }
+          // if non-valid ...
+          if(indexUser != indexPassWord){
+            if(success){
+              APTTestingLab.logErr("unexpected: successful login should have been invalid - user: " + userName + " pass: " + userPass);
+            }else{
+              APTTestingLab.logInfo("expected: unsuccessful login - user: " + userName + " pass: " + userPass);
+            }
+          }
           driver.navigate().back();
         }
       }
@@ -76,14 +70,13 @@ public class APTLabLogin {
         loginSuccess = false;
       }
       else if(titleText.equals("Frequent Login")){
-        APTTestingLab.logInfo("frequent login - user: " + userName + " password: " + userPass);
         loginSuccess = false;
         loginAttempts++;
         // try up to 3 times
         int loginLimit = 3;
         if(loginAttempts < loginLimit){
           long frequentTimeOut = 10000;
-          APTTestingLab.logInfo("waiting " + frequentTimeOut / 1000 + " seconds, then trying attempt " + loginAttempts + "/" + loginLimit);
+          APTTestingLab.logInfo("frequent login timeout - waiting " + frequentTimeOut / 1000 + " seconds, then trying attempt " + loginAttempts + "/" + loginLimit);
           try{
             Thread.sleep(frequentTimeOut);
           } catch(InterruptedException ex) {
@@ -98,7 +91,7 @@ public class APTLabLogin {
         loginSuccess = true;
       }
       if(loginAttempts > 0){
-        APTTestingLab.logInfo("finally! wait is over. user: " + userName + " pass: " + userPass);
+        //APTTestingLab.logInfo("finally! wait is over. user: " + userName + " pass: " + userPass);
       }
 
       return loginSuccess;
