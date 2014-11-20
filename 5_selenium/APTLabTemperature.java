@@ -1,5 +1,7 @@
 //package org.openqa.selenium.example;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.List;
 import com.google.common.collect.Lists;
 
@@ -31,6 +33,18 @@ public class APTLabTemperature {
       if(header != null){
         String headerText = header.getText();
         System.out.println("page header: " + headerText);
+        // src: http://www.tutorialspoint.com/java/java_regular_expressions.htm
+        // format: <h2>32 Farenheit = 0 Celsius </h2>
+        String tempRegEx = "[\\d\\.]+";
+        String pattern = "(" + tempRegEx + ") Farenheit = (" + tempRegEx + ") Celsius";
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(headerText);
+
+        if(m.find()){
+          String tempF = m.group(1);
+          String tempC = m.group(2);
+          System.out.println("tempF: " + tempF + " tempC: " + tempC);
+        }
       }
       else{
         System.out.println("header undefined");
