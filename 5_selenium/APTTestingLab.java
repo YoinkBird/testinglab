@@ -20,12 +20,19 @@ public class APTTestingLab {
         // Enter the username
         // usernames:  andy, bob and charley
         // passwords: apple, bathtub, china
+        // TODO: warning! make sure both lists are same length
+        List<String> userNames = Lists.newArrayList("andy");
+        List<String> userPasswords = Lists.newArrayList("apple");
         WebElement query = driver.findElement(By.name("userId"));
         query.clear();
-        query.sendKeys("andy");
-        query = driver.findElement(By.name("userPassword"));
-        query.clear();
-        query.sendKeys("apple");
+        for (int index = 0; index < userNames.size(); index++){
+          String userName = userNames.get(index);
+          String userPass = userPasswords.get(index);
+          query.sendKeys(userName);
+          query = driver.findElement(By.name("userPassword"));
+          query.clear();
+          query.sendKeys(userPass);
+        }
 
         // "press enter"
         query.submit();
