@@ -7,12 +7,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.*;
 import org.openqa.selenium.support.PageFactory;
 
 // explanation http://docs.seleniumhq.org/docs/03_webdriver.jsp#selenium-webdriver-api-commands-and-operations
 public class APTLabTemperature {
-    private WebDriver driver;
     private WebElement farenheitTemperature;
+    @FindBy(tagName = "h2")
+    private WebElement header;
 
 
     // http://docs.seleniumhq.org/docs/04_webdriver_advanced.jsp#implicit-waits
@@ -22,5 +24,16 @@ public class APTLabTemperature {
       farenheitTemperature.sendKeys("32");
       // "press enter"
       farenheitTemperature.submit();
+
+    }
+
+    public void verifyTemperature(){
+      if(header != null){
+        String headerText = header.getText();
+        System.out.println("page header: " + headerText);
+      }
+      else{
+        System.out.println("header undefined");
+      }
     }
 }

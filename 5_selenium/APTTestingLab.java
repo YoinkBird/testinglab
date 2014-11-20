@@ -52,6 +52,9 @@ public class APTTestingLab {
       temperatureDriver.get("http://apt-public.appspot.com/testing-lab-calculator.html");
       APTLabTemperature temperaturePage = PageFactory.initElements(temperatureDriver, APTLabTemperature.class);
       temperaturePage.checkTemperature();
+      // Check the title of the page - this shows the updated title after function 'submits'
+      System.out.println("Page title is: " + temperatureDriver.getTitle());
+      temperaturePage.verifyTemperature();
 
       // close browser
       //temperatureDriver.quit();
