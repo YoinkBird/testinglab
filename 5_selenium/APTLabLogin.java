@@ -58,6 +58,9 @@ public class APTLabLogin {
     }
 
     private boolean login(String userName, String userPass){
+      return login(userName, userPass, 0);
+    }
+    private boolean login(String userName, String userPass, int loginAttempts){
       boolean loginSuccess = false;
       userId.clear();
       userId.sendKeys(userName);
@@ -75,10 +78,27 @@ public class APTLabLogin {
       else if(titleText.equals("Frequent Login")){
         APTTestingLab.logInfo("frequent login - user: " + userName + " password: " + userPass);
         loginSuccess = false;
+        loginAttempts++;
+        // try up to 3 times
+        int loginLimit = 3;
+        if(loginAttempts < loginLimit){
+          long frequentTimeOut = 10000;
+          APTTestingLab.logInfo("waiting " + frequentTimeOut / 1000 + " seconds, then trying attempt " + loginAttempts + "/" + loginLimit);
+          try{
+            Thread.sleep(frequentTimeOut);
+          } catch(InterruptedException ex) {
+            Thread.currentThread().interrupt();
+          }
+          driver.navigate().back();
+          loginSuccess = this.login(userName, userPass, loginAttempts);
+        }
       }
       else if(titleText.equals("Online temperature conversion calculator")){
         //APTTestingLab.logInfo("successful login - user: " + userName + " pass: " + userPass);
         loginSuccess = true;
+      }
+      if(loginAttempts > 0){
+        APTTestingLab.logInfo("finally! wait is over. user: " + userName + " pass: " + userPass);
       }
 
       return loginSuccess;
