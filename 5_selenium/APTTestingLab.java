@@ -20,6 +20,8 @@ public class APTTestingLab {
       checkLoginPage();
       // test temperatures
       checkTemperaturePage();
+      // test url params
+      checkUrlParams();
     }
 
     private static WebDriver createDriver(){
@@ -61,5 +63,55 @@ public class APTTestingLab {
 
       // close browser
       temperatureDriver.quit();
+    }
+
+    /* if no url entered, page will be:
+       <html><head><title>No Temperature</title></head><body><h2>Need to enter a temperature!</h2></body></html>
+       else, page will be:
+       <html><head><title>Temperature Converter Result</title></head><body><h2>-30 Farenheit = -34.44 Celsius </h2>
+       <form action="LookupTemperature" method="post"><!-- OMMITED FOR BREVITY --></form>
+       </body></html>
+     */ 
+    private static void checkUrlParams(){
+      // prepare to load a page
+      WebDriver driver = createDriver();
+      // verify URL
+      // http://apt-public.appspot.com/testing-lab-conversion?farenheitTemperature=-30
+      // The temperature parameter should be passed in as farenheitTemperature=-40 in the URL;
+      //  the parameter "farenheitTemperature" should be case insensitive
+
+      String pageBaseUrl = "http://apt-public.appspot.com/testing-lab-conversion";
+      List<String> testUrlParams = Lists.newArrayList(
+          "farenheitTemperature=-30",   // known good
+          "fahrenheitTemperature=-30",  // proper spelling of fahrenheit (src: wikipedia)
+          "FarenheitTemperature=-30",   // first letter upper
+          "FARENHEITTEMPERATURE=-30"   // WHY ARE WE YELLING?
+          );
+      // Go to the APT Testing Lab home page
+      for (int index = 0; index < testUrlParams.size(); index++){
+        String testUrlParam = testUrlParams.get(index);
+        String urlUnderTest = pageBaseUrl + "?" + testUrlParam;
+        logInfo("testing " + urlUnderTest);
+        // load page
+        driver.get(urlUnderTest);
+        // verify that it worked
+        String titleText = driver.getTitle();
+        if(titleText.equals("No Temperature")){
+          logErr("broken page URL, not case-insensitive:  " + urlUnderTest);
+        }
+      }
+
+      // close browser
+      driver.quit();
+    }
+
+    public static void logInfo(String message){
+      log("-I-: " + message);
+    }
+    public static void logErr(String message){
+      log("-E-: " + message);
+    }
+    public static void log(String message){
+      System.out.println(message);
     }
 }
