@@ -52,9 +52,14 @@ public class APTTestingLab {
       temperatureDriver.get("http://apt-public.appspot.com/testing-lab-calculator.html");
       APTLabTemperature temperaturePage = PageFactory.initElements(temperatureDriver, APTLabTemperature.class);
       // submit sample temperature
-      temperaturePage.checkTemperature("452.01");
+      List<String> testTemps = Lists.newArrayList("-1","-0.01","0","0.01","32","211","211.9","212","213","213.3", "451", "452.01");
+      for (int index = 0; index < testTemps.size(); index++){
+        String testTemp = testTemps.get(index);
+        temperaturePage.checkTemperature(testTemp);
+        temperatureDriver.navigate().back();
+      }
 
       // close browser
-      //temperatureDriver.quit();
+      temperatureDriver.quit();
     }
 }

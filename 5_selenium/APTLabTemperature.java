@@ -31,13 +31,14 @@ public class APTLabTemperature {
 
     }
 
+    // Temperature results should be 2 places of precision for temperatures from 0 to 212 degrees Farenheit, inclusive, and 1 place of precision otherwise.
     public void verifyTemperature(){
       if(header != null){
         String headerText = header.getText();
         System.out.println("page header: " + headerText);
         // src: http://www.tutorialspoint.com/java/java_regular_expressions.htm
         // format: <h2>32 Farenheit = 0 Celsius </h2>
-        String tempRegEx = "[\\d\\.]+";
+        String tempRegEx = "[-\\d\\.]+";
         String pattern = "(" + tempRegEx + ") Farenheit = (" + tempRegEx + ") Celsius";
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(headerText);
@@ -45,7 +46,7 @@ public class APTLabTemperature {
         if(m.find()){
           String tempF = m.group(1);
           String tempC = m.group(2);
-          System.out.println("tempF: " + tempF + " tempC: " + tempC);
+          System.out.println("      tempF: " + tempF + " tempC: " + tempC);
         }
       }
       else{
