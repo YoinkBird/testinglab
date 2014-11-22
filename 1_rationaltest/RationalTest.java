@@ -1,4 +1,5 @@
 import junit.framework.TestCase;
+import org.junit.Test;
 
 public class RationalTest extends TestCase {
 
@@ -52,14 +53,17 @@ public class RationalTest extends TestCase {
     /* my tests */
     // method under test:
     //    public Rational (int numerator, int denominator) {
-    public void testConstructor() {
-      //TODO: look up junit for catching  divByZero error
-      // new Rational(0,0);
+    // http://junit.sourceforge.net/javadoc/org/junit/Test.html#expected()
+    @Test(expected=ArithmeticException.class)
+    public void testConstructorArithmeticException() {
+      Rational divByZero = new Rational(0,0);
     }
     // method under test:
     //    public Rational plus(Rational b)
     public void testAddition() {
       assertEquals( new Rational(2,3).plus( new Rational(2,3)), new Rational(4,3));
+      assertEquals( new Rational(-2,3).plus( new Rational(2,3)), new Rational(0,1));
+      assertEquals( new Rational(13,20).plus( new Rational(2,3)), new Rational(39 + 40,60));
     }
     // method under test:
     //    public Rational times(Rational b)
