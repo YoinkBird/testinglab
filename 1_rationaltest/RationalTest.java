@@ -48,50 +48,71 @@ public class RationalTest extends TestCase {
         // junit.swingui.TestRunner.main(testCaseName);
         junit.textui.TestRunner.main(testCaseName);
     }
-}
 
-/*
-   Test method stubs:
+    /* my tests */
     // method under test:
     //    public Rational (int numerator, int denominator) {
     public void testConstructor() {
+      //TODO: look up junit for catching  divByZero error
+      // new Rational(0,0);
     }
     // method under test:
     //    public Rational plus(Rational b)
     public void testAddition() {
+      assertEquals( new Rational(2,3).plus( new Rational(2,3)), new Rational(4,3));
     }
     // method under test:
     //    public Rational times(Rational b)
     public void testMultiplication() {
+      assertEquals( new Rational(2,3).times( new Rational(2,3)), new Rational(4,9));
     }
     // method under test:
     //    public Rational minus(Rational b)
     public void testSubtraction() {
+      assertEquals( new Rational(2,3).minus( new Rational(2,3)), new Rational(0,1));
+      assertEquals( new Rational(2,3).minus( new Rational(1,3)), new Rational(1,3));
     }
     // method under test:
     //    public Rational divides(Rational b)
     public void testDivision() {
+      assertEquals( new Rational(2,3).divides( new Rational(2,3)), new Rational(1,1));
     }
     // method under test:
     //    public static void setTolerance( Rational epsilon )
+    //    public static Rational getTolerance( ) {
     // set tolerance to be something high/low and see what happens
     public void testRootTolerance() {
+      Rational testMe = new Rational(2,3);
+      // change tolerance, then verify that it was updated
+      // setting tolerance to 2x previous value to remain flexible
+      Rational currentTolerance = testMe.getTolerance();
+      Rational newTolerance = currentTolerance.times(new Rational(2,1));
+      testMe.setTolerance(newTolerance);
+      assertNotSame(currentTolerance, testMe.getTolerance());
+      
     }
     // method under test:
     //    public boolean isLessThan( Rational r )
-    public void testisLessThan() {
+    public void testIsLessThan() {
+      assertEquals( new Rational(1,3).isLessThan( new Rational(2,3)), true);
+      assertEquals( new Rational(2,3).isLessThan( new Rational(2,3)), false);
+      assertEquals( new Rational(3,3).isLessThan( new Rational(2,3)), false);
     }
     // method under test:
     //    public Rational abs( )
     public void testAbsolute() {
+      assertEquals( new Rational(-3,3).abs(), new Rational(3,3));
     }
     // method under test:
     //    public String toString( )
     public void testToString() {
+      assertEquals(new Rational(2,3).toString(), "2/3");
+      assertNotSame(new Rational(2,3).toString(), "2/3");
     }
-*/
+}
+
 /*
-   These are not tested yet:
+   These are to be tested by me:
     public Rational (int numerator, int denominator) {
     public Rational plus(Rational b) {
     public Rational times(Rational b) {
