@@ -50,3 +50,59 @@ public class RationalTest extends TestCase {
     }
 }
 
+/*
+   Test method stubs:
+    // method under test:
+    //    public Rational (int numerator, int denominator) {
+    public void testConstructor() {
+    }
+    // method under test:
+    //    public Rational plus(Rational b)
+    public void testAddition() {
+    }
+    // method under test:
+    //    public Rational times(Rational b)
+    public void testMultiplication() {
+    }
+    // method under test:
+    //    public Rational minus(Rational b)
+    public void testSubtraction() {
+    }
+    // method under test:
+    //    public Rational divides(Rational b)
+    public void testDivision() {
+    }
+    // method under test:
+    //    public static void setTolerance( Rational epsilon )
+    // set tolerance to be something high/low and see what happens
+    public void testRootTolerance() {
+    }
+    // method under test:
+    //    public boolean isLessThan( Rational r )
+    public void testisLessThan() {
+    }
+    // method under test:
+    //    public Rational abs( )
+    public void testAbsolute() {
+    }
+    // method under test:
+    //    public String toString( )
+    public void testToString() {
+    }
+*/
+/*
+   These are not tested yet:
+    public Rational (int numerator, int denominator) {
+    public Rational plus(Rational b) {
+    public Rational times(Rational b) {
+    public Rational minus(Rational b) {
+    public Rational divides(Rational b) {
+    // set tolerance to be something high/low and see what happens
+    public static void setTolerance( Rational epsilon ) {
+    public boolean isLessThan( Rational r ) {
+    public Rational abs( ) {
+    public String toString( ) {
+   Skip private methods:
+    private static int gcd(int x, int y) {
+    private static int lcm(int x, int y) {
+ */
