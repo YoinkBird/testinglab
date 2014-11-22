@@ -1,5 +1,6 @@
 import junit.framework.TestCase;
 import org.junit.Test;
+import java.lang.reflect.*;
 
 public class RationalTest extends TestCase {
 
@@ -51,6 +52,18 @@ public class RationalTest extends TestCase {
     }
 
     /* my tests */
+    /*
+    // private methods:
+    // https://docs.oracle.com/javase/7/docs/api/java/lang/reflect/package-summary.html
+    // Throws: testConstructorIsPrivate(RationalTest)java.lang.NoSuchMethodException: Rational.<init>()
+    @Test
+    public void testConstructorIsPrivate() throws Exception {
+      Constructor constructor = Rational.class.getDeclaredConstructor(int.class,int.class);
+      //assertTrue(Modifier.isPrivate(constructor.getModifiers()));
+      constructor.setAccessible(true);
+      constructor.newInstance();
+    }
+    */
     // method under test:
     //    public Rational (int numerator, int denominator) {
     // http://junit.sourceforge.net/javadoc/org/junit/Test.html#expected()
