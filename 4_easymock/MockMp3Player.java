@@ -16,10 +16,10 @@ public class MockMp3Player implements Mp3Player {
   private boolean isPlaying = false;
   // starts at beginning
   private double currentPosition = 0.0;
-  // TODO: set this somewhere
-  private String currentSong = "";
   // store songs
   private ArrayList trackList = new ArrayList();
+  // song index, start at beginning of list
+  private int songIndex = 0;
 
   /** 
    * Begin playing the filename at the top of the
@@ -67,23 +67,46 @@ public class MockMp3Player implements Mp3Player {
    * Returns the currently playing file name.
    */
   public String currentSong(){
-    return currentSong;
+    String currentTrack = null;
+    if(this.trackList.size() > 0){
+      currentTrack = (String) this.trackList.get(this.songIndex);
+    }
+      
+    return (String) currentTrack;
   }
 
 
   /** 
    * Advance to the next song in the playlist 
    * and begin playing it.
+   * wrap-behaviour: if 'repeat' enabled and already at last song, go to begin of list
    */
   public void next(){
+    boolean repeat = false;
+    this.stop();
+    if(songIndex < trackList.size() -1 ){
+      this.songIndex++;
+    }else if(repeat){
+      this.songIndex = 0;
+    }
+    this.play();
   }
 
 
   /**
    * Go back to the previous song in the playlist
    * and begin playing it.
+   * wrap-behaviour: if 'repeat' enabled and already at first song, go to end of list
    */
   public void prev(){
+    boolean repeat = false;
+    this.stop();
+    if(songIndex > 0){
+      this.songIndex--;
+    }else if(repeat){
+      this.songIndex = trackList.size() - 1;
+    }
+    this.play();
   }
 
 
