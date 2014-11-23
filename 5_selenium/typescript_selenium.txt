@@ -1,0 +1,134 @@
+
+c:\workspace\skl\testinglab\5_selenium>run_selenium.bat
+
+c:\workspace\skl\testinglab\5_selenium>REM https://code.google.com/p/selenium/wiki/GettingStarted
+
+c:\workspace\skl\testinglab\5_selenium>set RESDIR=..\res
+
+c:\workspace\skl\testinglab\5_selenium>set this_classpath=;..\res\selenium-server-standalone-2.44.0.jar
+
+c:\workspace\skl\testinglab\5_selenium>set this_classname=APTTestingLab
+
+c:\workspace\skl\testinglab\5_selenium>set this_javac_files=APTTestingLab.java
+
+c:\workspace\skl\testinglab\5_selenium>set this_java_target=APTTestingLab
+
+c:\workspace\skl\testinglab\5_selenium>echo APTTestingLab
+APTTestingLab
+
+c:\workspace\skl\testinglab\5_selenium>javac -cp ;..\res\selenium-server-standalone-2.44.0.jar APTTestingLab.java
+
+c:\workspace\skl\testinglab\5_selenium>java -cp c:\workspace\skl\testinglab\5_selenium;;..\res\selenium-server-standalone-2.44.0.jar APTTestingLab
+TEST: testing multiple logins and passwords
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: successful login - user: andy pass: apple
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: andy pass: bathtub
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: andy pass: china
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: andy pass: sorry
+-I-: expected: unsuccessful login - user: bob pass: apple
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: successful login - user: bob pass: bathtub
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: bob pass: china
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: bob pass: sorry
+-I-: expected: unsuccessful login - user: charlie pass: apple
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: charlie pass: bathtub
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-E-: unexpected: unsuccessful login should have been valid - user: charlie pass: china
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: charlie pass: sorry
+-I-: expected: unsuccessful login - user: hacker pass: apple
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: hacker pass: bathtub
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: hacker pass: china
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+TEST: testing one login and multiple invalid passwords
+-I-: testing username andy password: bathtub
+-I-: expected: unsuccessful login - user: andy pass: bathtub
+-I-:   current login attempts: 1
+-I-: first invalid login: Sat Nov 22 21:50:52 CST 2014
+-I-: testing username andy password: china
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: andy pass: china
+-I-:   current login attempts: 2
+-I-: testing username andy password: sorry
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: andy pass: sorry
+-I-:   current login attempts: 3
+-I-: testing username andy password: baloney
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: andy pass: baloney
+-I-:   current login attempts: 4
+-I-:  invalid login #4: Sat Nov 22 21:51:31 CST 2014 first invalid login: Sat Nov 22 21:50:52 CST 2014
+-E-: less than one minute timeout after 3 invalid logins
+-I-: testing username andy password: junk
+-I-: frequent login timeout - waiting 10 seconds, then trying attempt 1/3
+-I-: expected: unsuccessful login - user: andy pass: junk
+-I-:   current login attempts: 5
+-I-:  invalid login #5: Sat Nov 22 21:51:44 CST 2014 first invalid login: Sat Nov 22 21:50:52 CST 2014
+-E-: less than one minute timeout after 3 invalid logins
+page header: -1 Farenheit = -18.33 Celsius
+      tempF: -1 tempC: -18.33
+-I-: temperature -18.33 C has2 decimals precision, correct amount
+page header: -0.01 Farenheit = -17.78 Celsius
+      tempF: -0.01 tempC: -17.78
+-I-: temperature -17.78 C has2 decimals precision, correct amount
+page header: 0 Farenheit = -17.78 Celsius
+      tempF: 0 tempC: -17.78
+-I-: temperature -17.78 C has2 decimals precision, correct amount
+page header: 0.01 Farenheit = -17.77 Celsius
+      tempF: 0.01 tempC: -17.77
+-I-: temperature -17.77 C has2 decimals precision, correct amount
+page header: 32 Farenheit = 0 Celsius
+      tempF: 32 tempC: 0
+-E-: temperature 0 C does not have 2 decimals precision, has 0 decimals
+ Got a NumberFormatException on 32
+page header: 211 Farenheit = 99.44 Celsius
+      tempF: 211 tempC: 99.44
+-I-: temperature 99.44 C has2 decimals precision, correct amount
+page header: 211.9 Farenheit = 99.94 Celsius
+      tempF: 211.9 tempC: 99.94
+-I-: temperature 99.94 C has2 decimals precision, correct amount
+page header: 212 Farenheit = 100 Celsius
+      tempF: 212 tempC: 100
+-E-: temperature 100 C does not have 2 decimals precision, has 0 decimals
+ Got a NumberFormatException on 212
+page header: 213 Farenheit = 100.56 Celsius
+      tempF: 213 tempC: 100.56
+-I-: temperature 100.56 C has2 decimals precision, correct amount
+page header: 213.3 Farenheit = 100.72 Celsius
+      tempF: 213.3 tempC: 100.72
+-I-: temperature 100.72 C has2 decimals precision, correct amount
+page header: 451 Farenheit = 232.78 Celsius
+      tempF: 451 tempC: 232.78
+-I-: temperature 232.78 C has2 decimals precision, correct amount
+page header: 452.01 Farenheit = 233.34 Celsius
+      tempF: 452.01 tempC: 233.34
+-I-: temperature 233.34 C has2 decimals precision, correct amount
+-I-: testing http://apt-public.appspot.com/testing-lab-conversion?farenheitTemperature=-30
+-I-: testing http://apt-public.appspot.com/testing-lab-conversion?fahrenheitTemperature=-30
+-E-: broken page URL, not case-insensitive:  http://apt-public.appspot.com/testing-lab-conversion?fahrenheitTemperature=-30
+-I-: testing http://apt-public.appspot.com/testing-lab-conversion?FarenheitTemperature=-30
+-E-: broken page URL, not case-insensitive:  http://apt-public.appspot.com/testing-lab-conversion?FarenheitTemperature=-30
+-I-: testing http://apt-public.appspot.com/testing-lab-conversion?FARENHEITTEMPERATURE=-30
+-E-: broken page URL, not case-insensitive:  http://apt-public.appspot.com/testing-lab-conversion?FARENHEITTEMPERATURE=-30
+
+c:\workspace\skl\testinglab\5_selenium>REM cleanup; littering is bad
+
+c:\workspace\skl\testinglab\5_selenium>set RESDIR=
+
+c:\workspace\skl\testinglab\5_selenium>set this_classpath=
+
+c:\workspace\skl\testinglab\5_selenium>set this_classname=
+
+c:\workspace\skl\testinglab\5_selenium>set this_java_target=
+
+c:\workspace\skl\testinglab\5_selenium>set this_javac_files=
+
+c:\workspace\skl\testinglab\5_selenium>

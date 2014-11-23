@@ -1,0 +1,78 @@
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>run_mockobjects.bat                                                         
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set RESDIR=..\res                                                           
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_classpath=;..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-
+core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\selenium-server-standalone-2.11.0.jar;..\res\guava-10.0.1.jar;
+..\res\junit\4.10\junit-4.10.jar                                                                                      
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_classpath=;..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-
+core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\selenium-server-standalone-2.11.0.jar;..\res\guava-10.0.1.jar;
+..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-core.jar                                                      
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_classpath=;..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-
+core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\selenium-server-standalone-2.11.0.jar;..\res\guava-10.0.1.jar;
+..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar              
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_classpath=;..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-
+core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\selenium-server-standalone-2.11.0.jar;..\res\guava-10.0.1.jar;
+..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\seleni
+um-server-standalone-2.11.0.jar                                                                                       
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_classpath=;..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-
+core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\selenium-server-standalone-2.11.0.jar;..\res\guava-10.0.1.jar;
+..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\seleni
+um-server-standalone-2.11.0.jar;..\res\guava-10.0.1.jar                                                               
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_javac_files=TestTestingLabConverterServlet.java TestingLabConverter
+Servlet.java                                                                                                          
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_java_target=TestTestingLabConverterServlet                         
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>del *class                                                                  
+Could Not Find c:\workspace\skl\testinglab\3_mockobjects\*class                                                       
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>dir                                                                         
+ Volume in drive C has no label.                                                                                      
+ Volume Serial Number is 44D6-76A2                                                                                    
+                                                                                                                      
+ Directory of c:\workspace\skl\testinglab\3_mockobjects                                                               
+                                                                                                                      
+2014-11-22  21:37    <DIR>          .                                                                                 
+2014-11-22  21:37    <DIR>          ..                                                                                
+2014-11-18  19:05             1,225 CityTemperatureServiceProvider.java                                               
+2014-11-22  21:32               773 run_mockobjects.bat                                                               
+2014-11-22  21:32             2,027 TestingLabConverterServlet.java                                                   
+2014-11-22  21:32             2,373 TestTestingLabConverterServlet.java                                               
+               4 File(s)          6,398 bytes                                                                         
+               2 Dir(s)  35,136,708,608 bytes free                                                                    
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>javac -cp ;..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-core.jar;
+..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\selenium-server-standalone-2.11.0.jar;..\res\guava-10.0.1.jar;..\res\ju
+nit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\selenium-server
+-standalone-2.11.0.jar;..\res\guava-10.0.1.jar TestTestingLabConverterServlet.java TestingLabConverterServlet.java    
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>java -cp c:\workspace\skl\testinglab\3_mockobjects;;..\res\junit\4.10\junit-
+4.10.jar;..\res\mockobjects-0.6-core.jar;..\res\mockobjects-0.6-j1.4-j2ee1.2.jar;..\res\selenium-server-standalone-2.1
+1.0.jar;..\res\guava-10.0.1.jar;..\res\junit\4.10\junit-4.10.jar;..\res\mockobjects-0.6-core.jar;..\res\mockobjects-0.
+6-j1.4-j2ee1.2.jar;..\res\selenium-server-standalone-2.11.0.jar;..\res\guava-10.0.1.jar org.junit.runner.JUnitCore Tes
+tTestingLabConverterServlet                                                                                           
+JUnit version 4.10                                                                                                    
+...                                                                                                                   
+Time: 0.192                                                                                                           
+                                                                                                                      
+OK (3 tests)                                                                                                          
+                                                                                                                      
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>REM cleanup; littering is bad                                               
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set RESDIR=                                                                 
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_classpath=                                                         
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_java_target=                                                       
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>set this_javac_files=                                                       
+                                                                                                                      
+c:\workspace\skl\testinglab\3_mockobjects>  

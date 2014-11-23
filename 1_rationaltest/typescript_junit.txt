@@ -1,0 +1,140 @@
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>run_junit.bat                                                              
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set RESDIR=..\res                                                          
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_classpath=;..\res\junit\4.10\junit-4.10.jar                       
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_classname=RationalTest                                            
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_javac_files=RationalTest.java                                     
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_java_target=RationalTest                                          
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>echo RationalTest                                                          
+RationalTest                                                                                                          
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_classname=Rational                                                
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_javac_files=RationalTest.java Rational.java                       
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_java_target=RationalTest Rational                                 
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>echo Rational                                                              
+Rational                                                                                                              
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>REM remove class files, verify by listing dir contents                     
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>del *class                                                                 
+Could Not Find c:\workspace\skl\testinglab\1_rationaltest\*class                                                      
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>dir                                                                        
+ Volume in drive C has no label.                                                                                      
+ Volume Serial Number is 44D6-76A2                                                                                    
+                                                                                                                      
+ Directory of c:\workspace\skl\testinglab\1_rationaltest                                                              
+                                                                                                                      
+2014-11-22  21:32    <DIR>          .                                                                                 
+2014-11-22  21:32    <DIR>          ..                                                                                
+2014-11-17  19:03               915 coverage.txt                                                                      
+2014-11-22  12:44             6,020 Rational.java                                                                     
+2014-11-22  21:32             5,418 RationalTest.java                                                                 
+2014-11-22  21:32               946 run_emma.bat                                                                      
+2014-11-22  21:32               691 run_junit.bat                                                                     
+               5 File(s)         13,990 bytes                                                                         
+               2 Dir(s)  35,137,269,760 bytes free                                                                    
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>javac -cp ;..\res\junit\4.10\junit-4.10.jar RationalTest.java Rational.java
+                                                                                                                      
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>java -cp c:\workspace\skl\testinglab\1_rationaltest;;..\res\junit\4.10\juni
+t-4.10.jar RationalTest Rational                                                                                      
+...46341* 46341 = -2147479015                                                                                         
+46340* 46340 = 2147395600                                                                                             
+low high: 0/1 46340/1                                                                                                 
+square of midpoint is: 536848900/1                                                                                    
+low high: 0/1 23170/1                                                                                                 
+square of midpoint is: 134212225/1                                                                                    
+low high: 0/1 11585/1                                                                                                 
+square of midpoint is: 134212225/4                                                                                    
+low high: 0/1 11585/2                                                                                                 
+square of midpoint is: 134212225/16                                                                                   
+low high: 0/1 11585/4                                                                                                 
+square of midpoint is: 134212225/64                                                                                   
+low high: 0/1 11585/8                                                                                                 
+square of midpoint is: 134212225/256                                                                                  
+low high: 0/1 11585/16                                                                                                
+square of midpoint is: 134212225/1024                                                                                 
+low high: 0/1 11585/32                                                                                                
+square of midpoint is: 134212225/4096                                                                                 
+low high: 0/1 11585/64                                                                                                
+square of midpoint is: 134212225/16384                                                                                
+low high: 0/1 11585/128                                                                                               
+square of midpoint is: 134212225/65536                                                                                
+low high: 0/1 11585/256                                                                                               
+square of midpoint is: 134212225/262144                                                                               
+low high: 0/1 11585/512                                                                                               
+square of midpoint is: 134212225/1048576                                                                              
+low high: 0/1 11585/1024                                                                                              
+square of midpoint is: 134212225/4194304                                                                              
+low high: 0/1 11585/2048                                                                                              
+square of midpoint is: 134212225/16777216                                                                             
+low high: 0/1 11585/4096                                                                                              
+square of midpoint is: 134212225/67108864                                                                             
+low high: 0/1 11585/8192                                                                                              
+square of midpoint is: 134212225/268435456                                                                            
+low high: 0/1 11585/16384                                                                                             
+square of midpoint is: 134212225/1073741824                                                                           
+low high: 11585/32768 11585/16384                                                                                     
+square of midpoint is: 1/0                                                                                            
+low high: 11585/32768 34755/65536                                                                                     
+square of midpoint is: -1/0                                                                                           
+low high: 57925/131072 34755/65536                                                                                    
+square of midpoint is: -1/0                                                                                           
+low high: 127435/262144 34755/65536                                                                                   
+square of midpoint is: -1/0                                                                                           
+low high: 266455/524288 34755/65536                                                                                   
+square of midpoint is: 1/0                                                                                            
+low high: 266455/524288 544495/1048576                                                                                
+square of midpoint is: 1/0                                                                                            
+low high: 266455/524288 1077405/2097152                                                                               
+square of midpoint is: 1/0                                                                                            
+low high: 266455/524288 2143225/4194304                                                                               
+square of midpoint is: -1/0                                                                                           
+low high: 4274865/8388608 2143225/4194304                                                                             
+square of midpoint is: -1/0                                                                                           
+F..........E                                                                                                          
+Time: 0.129                                                                                                           
+There was 1 error:                                                                                                    
+1) testConstructorArithmeticException(RationalTest)java.lang.ArithmeticException: / by zero                           
+        at Rational.<init>(Rational.java:21)                                                                          
+        at RationalTest.testConstructorArithmeticException(RationalTest.java:72)                                      
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)                                                
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)                              
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)                      
+        at RationalTest.main(RationalTest.java:51)                                                                    
+There was 1 failure:                                                                                                  
+1) testRoot(RationalTest)junit.framework.AssertionFailedError                                                         
+        at RationalTest.testRoot(RationalTest.java:43)                                                                
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)                                                
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)                              
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)                      
+        at RationalTest.main(RationalTest.java:51)                                                                    
+                                                                                                                      
+FAILURES!!!                                                                                                           
+Tests run: 13,  Failures: 1,  Errors: 1                                                                               
+                                                                                                                      
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>REM cleanup; littering is bad                                              
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set RESDIR=                                                                
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_classpath=                                                        
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_classname=                                                        
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_java_target=                                                      
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest>set this_javac_files=                                                      
+                                                                                                                      
+c:\workspace\skl\testinglab\1_rationaltest> 

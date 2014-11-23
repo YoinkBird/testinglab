@@ -1,0 +1,59 @@
+c:\workspace\skl\testinglab\4_easymock>run_easymock.bat
+
+c:\workspace\skl\testinglab\4_easymock>REM clean compile, list dir to verify
+
+c:\workspace\skl\testinglab\4_easymock>del *class
+
+c:\workspace\skl\testinglab\4_easymock>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 44D6-76A2
+
+ Directory of c:\workspace\skl\testinglab\4_easymock
+
+2014-11-22  21:39    <DIR>          .
+2014-11-22  21:39    <DIR>          ..
+2014-11-22  21:32             2,763 MockMp3Player.java
+2014-11-22  18:04             2,867 MockMp3Player_notMine.java
+2014-11-22  18:08             1,269 Mp3Player.java
+2014-11-22  21:32               676 run_easymock.bat
+2014-11-22  19:02             2,093 TestMp3Player.java
+               5 File(s)          9,668 bytes
+               2 Dir(s)  35,137,204,224 bytes free
+
+c:\workspace\skl\testinglab\4_easymock>set RESDIR=..\res
+
+c:\workspace\skl\testinglab\4_easymock>set this_classpath=;..\res\junit\4.10\junit-4.10.jar
+
+c:\workspace\skl\testinglab\4_easymock>set this_classpath=;..\res\junit\4.10\junit-4.10.jar;..\res\easymock-3.2\easymock-3.2.jar
+
+c:\workspace\skl\testinglab\4_easymock>set this_classpath=;..\res\junit\4.10\junit-4.10.jar;..\res\easymock-3.2\easymock-3.2.jar;..\res\objenesis-tck-1.2.jar
+
+c:\workspace\skl\testinglab\4_easymock>set this_classpath=;..\res\junit\4.10\junit-4.10.jar;..\res\easymock-3.2\easymock-3.2.jar;..\res\objenesis-tck-1.2.jar;..\res\cglib-nodep-2.2.2.jar
+
+c:\workspace\skl\testinglab\4_easymock>set this_javac_files=TestMp3Player.java Mp3Player.java
+
+c:\workspace\skl\testinglab\4_easymock>set this_java_target=TestMp3Player
+
+c:\workspace\skl\testinglab\4_easymock>javac -cp ;..\res\junit\4.10\junit-4.10.jar;..\res\easymock-3.2\easymock-3.2.jar;..\res\objenesis-tck-1.2.jar;..\res\cglib-nodep-2.2.2.jar TestMp3Player.java Mp3Player.java
+Note: TestMp3Player.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+c:\workspace\skl\testinglab\4_easymock>java -cp c:\workspace\skl\testinglab\4_easymock;;..\res\junit\4.10\junit-4.10.jar;..\res\easymock-3.2\easymock-3.2.jar;..\res\objenesis-tck-1.2.jar;..\res\cglib-nodep-2.2.2.jar org.junit.runner.JUnitCore TestMp3Player
+JUnit version 4.10
+...
+Time: 0.017
+
+OK (3 tests)
+
+
+c:\workspace\skl\testinglab\4_easymock>REM cleanup; littering is bad
+
+c:\workspace\skl\testinglab\4_easymock>set RESDIR=
+
+c:\workspace\skl\testinglab\4_easymock>set this_classpath=
+
+c:\workspace\skl\testinglab\4_easymock>set this_java_target=
+
+c:\workspace\skl\testinglab\4_easymock>set this_javac_files=
+
+c:\workspace\skl\testinglab\4_easymock>
