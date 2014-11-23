@@ -18,6 +18,8 @@ public class MockMp3Player implements Mp3Player {
   private double currentPosition = 0.0;
   // TODO: set this somewhere
   private String currentSong = "";
+  // store songs
+  private ArrayList trackList = new ArrayList();
 
   /** 
    * Begin playing the filename at the top of the
@@ -25,6 +27,11 @@ public class MockMp3Player implements Mp3Player {
    * is empty. 
    */
   public void play(){
+    if(this.trackList.size() > 0){
+      // testPlay expects song to be at 0.1 s
+      this.currentPosition = 0.1;
+      this.isPlaying = true;
+    }
   }
 
 
@@ -32,6 +39,7 @@ public class MockMp3Player implements Mp3Player {
    * Pause playing. Play will resume at this spot. 
    */
   public void pause(){
+    this.isPlaying = false;
   }
 
 
@@ -41,6 +49,8 @@ public class MockMp3Player implements Mp3Player {
    * beginning of the song.
    */
   public void stop(){
+    this.isPlaying = false;
+    this.currentPosition = 0.0;
   }
 
   
@@ -90,6 +100,7 @@ public class MockMp3Player implements Mp3Player {
    * Load filenames into the playlist.
    */
   public void loadSongs(ArrayList names){
+    this.trackList = names;
   }
 
 }
